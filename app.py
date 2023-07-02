@@ -23,6 +23,7 @@ end_date = st.sidebar.date_input('End Date', value=dt.datetime.today())
 data = yf.download(ticker, start=start_date, end=end_date)
 fig = px.line(data, x=data.index, y=data["Adj Close"], title=ticker)
 st.plotly_chart(fig)
+st.info("If you are unable to see the Charts please try a different Browser as Visualization is not supported on  yout browser")
 
 pricing_data, fundamental_data, news = st.tabs(["Pricing Data", "Fundamental Data", "News"])
 
