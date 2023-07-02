@@ -40,23 +40,37 @@ with pricing_data:
     
 from alpha_vantage.fundamentaldata import FundamentalData
 with fundamental_data:
-    key = 'IQJEYBVZ4UJ3K4CO'
-    fd = FundamentalData(key, output_format='pandas')
+
+    # Trying with yfinance
+    stock = yf.Ticker(tick)
     st.subheader('Balance Sheet')
-    balance_sheet = fd.get_balance_sheet_annual(ticker)[0]
-    bs = balance_sheet.T[2:]
-    bs.columns = list(balance_sheet.T.iloc[0])
-    st.write(bs)
-    st.subheader('Income Sheet')
-    income_sheet = fd.get_income_statement_annual(ticker)[0]
-    is1 = income_sheet.T[2:]
-    is1.columns = list(income_sheet.T.iloc[0])
-    st.write(is1)
+    balance_sheet = stock.balance_sheet.T
+    st.write(balance_sheet)
+    st.subheader('Income Statement')
+    Income_Statement = stock.income_stmt.T
+    st.write(Income_Statement)
     st.subheader('Cash Flow Statement')
-    cash_flow = fd.get_cash_flow_annual(ticker)[0]
-    cf = cash_flow.T[2:]
-    cf.columns = list(cash_flow.T.iloc[0])
-    st.write(cf)
+    Cash_flow = stock.cashflow.T
+    st.write(Cash_flow)
+
+    
+    # key = 'IQJEYBVZ4UJ3K4CO'
+    # fd = FundamentalData(key, output_format='pandas')
+    # st.subheader('Balance Sheet')
+    # balance_sheet = fd.get_balance_sheet_annual(ticker)[0]
+    # bs = balance_sheet.T[2:]
+    # bs.columns = list(balance_sheet.T.iloc[0])
+    # st.write(bs)
+    # st.subheader('Income Sheet')
+    # income_sheet = fd.get_income_statement_annual(ticker)[0]
+    # is1 = income_sheet.T[2:]
+    # is1.columns = list(income_sheet.T.iloc[0])
+    # st.write(is1)
+    # st.subheader('Cash Flow Statement')
+    # cash_flow = fd.get_cash_flow_annual(ticker)[0]
+    # cf = cash_flow.T[2:]
+    # cf.columns = list(cash_flow.T.iloc[0])
+    # st.write(cf)
     # st.write('Wait for it to finish')
 
 from stocknews import StockNews
