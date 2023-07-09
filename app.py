@@ -53,26 +53,6 @@ with fundamental_data:
     Cash_flow = stock.cashflow.T
     st.write(Cash_flow)
 
-    # ***************************************************************
-    # key = 'IQJEYBVZ4UJ3K4CO'
-    # fd = FundamentalData(key, output_format='pandas')
-    # st.subheader('Balance Sheet')
-    # balance_sheet = fd.get_balance_sheet_annual(tick)[0]
-    # bs = balance_sheet.T[2:]
-    # bs.columns = list(balance_sheet.T.iloc[0])
-    # st.write(bs)
-    # st.subheader('Income Sheet')
-    # income_sheet = fd.get_income_statement_annual(tick)[0]
-    # is1 = income_sheet.T[2:]
-    # is1.columns = list(income_sheet.T.iloc[0])
-    # st.write(is1)
-    # st.subheader('Cash Flow Statement')
-    # cash_flow = fd.get_cash_flow_annual(tick)[0]
-    # cf = cash_flow.T[2:]
-    # cf.columns = list(cash_flow.T.iloc[0])
-    # st.write(cf)
-    # st.write('Wait for it to finish')
-
 from stocknews import StockNews
 with news:
     st.header(f'News of the {tick}')
